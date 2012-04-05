@@ -10,11 +10,11 @@ sys.path.append(os.path.join(PROJECT_ROOT, 'apps'))
 sys.path.append(os.path.join(PROJECT_ROOT, 'shared_apps'))
 sys.path.append(os.path.join(PROJECT_ROOT, '3rd_party_apps'))
 
-PROJECT_TITLE = 'Django Inventory'
+PROJECT_TITLE = 'Miro Inventory'
 PROJECT_NAME = 'django_inventory'
 
-DEBUG = False
-DEVELOPMENT = False
+DEBUG = True
+DEVELOPMENT = True
 TEMPLATE_DEBUG = DEBUG
 ADMINS = (
         # ('Your Name', 'your_email@domain.com'),
@@ -130,7 +130,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     'django.core.context_processors.request',
-    "grappelli.context_processors.admin_template_path",
+#    "grappelli.context_processors.admin_template_path",
     'django.contrib.messages.context_processors.messages',
 ]
 

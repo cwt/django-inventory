@@ -53,15 +53,15 @@ msgstr "eliminar solicitud"
 
 #: __init__.py:20 __init__.py:40
 msgid "add new item"
-msgstr "agregar nuevo item"
+msgstr ""
 
 #: __init__.py:21 __init__.py:41
 msgid "edit item"
-msgstr "editar item"
+msgstr ""
 
 #: __init__.py:22 __init__.py:42
 msgid "delete item"
-msgstr "borrar item"
+msgstr ""
 
 #: __init__.py:24 urls.py:34
 msgid "purchase order states"

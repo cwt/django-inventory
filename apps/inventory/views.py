@@ -61,9 +61,9 @@ def template_list(request):
         template_name = "generic_list.html", 
         extra_context={
             'title':'item templates',
-            'extra_columns':[
-                {'name':_(u'photo'),'attribute':lambda x: get_main_photo_html(x)},
-            ]
+#            'extra_columns':[
+#                {'name':_(u'photo'),'attribute':lambda x: get_main_photo_html(x)},
+#            ]
         },
     )
 
@@ -277,3 +277,4 @@ def fetch_resources(uri, rel):
     path = os.path.join(settings.MEDIA_ROOT, uri.replace(settings.MEDIA_URL, ""))
     return path
 '''
+#
