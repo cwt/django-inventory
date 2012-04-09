@@ -55,8 +55,7 @@ class SubLocation(models.Model):
     def get_absolute_url(self):
         return ('submissionlocation_view', [str(self.id)])
 
-   
-                
+
 class ItemTemplate(models.Model):
     description = models.CharField(verbose_name=_(u"description"), max_length=64)
     brand = models.CharField(verbose_name=_(u"brand"), max_length=32, null=True, blank=True)
@@ -169,8 +168,59 @@ class Supplier(models.Model):
     def get_absolute_url(self):
         return ('supplier_view', [str(self.id)])
 
+#Start of Miro Extensions
+class InventoryDocumentType(models.Model):
+    name = models.CharField(max_length=32, verbose_name=_("name"))
+    
+    class Meta:
+        ordering = ['name']
+        verbose_name = _(u"document type")
+        verbose_name_plural = _(u"document types")
+    
+    def __unicode__(self):
+        return self.name
+    
+    @models.permalink
+    def get_absolute_url(self):
+        return ('document_type_list', [])
+
+class ReceivingDocument(models.Model):
+    document_code = models.CharField(max_length=32, verbose_name=_(u"document code"))
+    document_type = models.ForeignKey(InventoryDocumentType, verbose_name=_(u'document type'))
+    reception_date = models.DateTimeField(verbose_name=_(u"reception date"))
+    
+    class Meta:
+        ordering = ['document_code']
+        verbose_name = _(u"receiving document")
+        verbose_name_plural = _(u"receiving documents")
+    
+    def __unicode__(self):
+        return self.document_code
+    
+    @models.permalink
+    def get_absolute_url(self):
+        return ('receiving_document_view', [str(self.id)])
+
+class ReceivingItem(models.Model):
+    receiving_document = models.ForeignKey(ReceivingDocument, verbose_name=_(u'receiving document'))
+    item_template = models.ForeignKey(ItemTemplate, verbose_name=_(u'item template'))
+    qty = models.PositiveIntegerField(verbose_name=_(u'quantity'))
+    notes = models.TextField(null=True, blank=True, verbose_name=_(u'notes'))
+    
+    class Meta:
+        verbose_name = _(u'receiving item')
+        verbose_name_plural = _(u'receiving items')
+        
+    def __unicode__(self):
+        return unicode(self.item_template)
+    
+    @models.permalink
+    def get_absolute_url(self):
+        return ('receiving_document_view', [str(self.receiving_document.id)])
+
 register(ItemTemplate, _(u'templates'), ['description', 'brand', 'model', 'part_number', 'notes'])
 register(Location, _(u'locations'), ['name', 'address_line1', 'address_line2', 'address_line3', 'address_line4', 'phone_number1', 'phone_number2'])
 register(SubLocation, _(u'sublocation'), [ 'location','parentID', 'completename', 'comments', 'level'])
 register(Inventory, _(u'inventory'), ['name', 'location__name'])
 register(Supplier, _(u'supplier'), ['name', 'address_line1', 'address_line2', 'address_line3', 'address_line4', 'phone_number1', 'phone_number2', 'notes'])
+register(ReceivingDocument, _(u'receiving document'), ['document_code', 'document_type', 'reception_date'])

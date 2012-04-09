@@ -1,11 +1,23 @@
 from django.utils.translation import ugettext_lazy as _
 
-from models import Location, SubLocation, ItemTemplate, Inventory, InventoryTransaction, Supplier
+from models import Location, SubLocation, ItemTemplate, Inventory,\
+                 InventoryTransaction, Supplier, InventoryDocumentType
 
 from common.api import register_links, register_menu
 
 import assets
 
+#Miro extensions
+document_type_list = {'text':_('document types'), 'view':'document_type_list' , 'famfam':'package_go'}
+document_type_create = {'text':_('create new document type'), 'view':'document_type_create', 'famfam':'error_add'}
+document_type_update = {'text':_(u'edit document type'), 'view':'document_type_update', 'args':'object.id', 'famfam':'error'}
+document_type_delete = {'text':_(u'delete document type'), 'view':'document_type_delete', 'args':'object.id', 'famfam':'error_delete'}
+document_type_view = {'text':_(u'details'), 'view':'document_type_view', 'args':'object.id', 'famfam':'package_go'}
+
+register_links(['document_type_view', 'document_type_list', 'document_type_create', 'document_type_update', 'inventory_delete', 'inventory_transaction_list'], [document_type_create], menu_name='sidebar')
+register_links(InventoryDocumentType, [document_type_update, document_type_delete])
+
+#end of miro extensions
 
 inventory_list = {'text':_('view all inventories'), 'view':'inventory_list', 'famfam':'package_go'}
 inventory_create = {'text':_('create new inventory'), 'view':'inventory_create', 'famfam':'package_add'}
@@ -79,11 +91,7 @@ register_links(Location, [location_update, location_delete])
 register_links(['sublocation_list', 'sublocation_create', 'sublocation_update', 'sublocation_delete'], [sublocation_create], menu_name='sidebar')
 register_links(SubLocation, [sublocation_update, sublocation_delete])
 
-
-
 register_menu([
     {'text':_('templates'), 'view':'template_list', 'links':template_menu_links, 'famfam':'page', 'position':1},
     {'text':_('inventories'), 'view':'inventory_list', 'links':inventory_menu_links,'famfam':'package', 'position':4},
 ])
-
-

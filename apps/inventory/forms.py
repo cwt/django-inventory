@@ -5,7 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from generic_views.forms import DetailForm
 
 from models import ItemTemplate, Log, \
-                   InventoryTransaction, Inventory, Supplier, Location, SubLocation
+                   InventoryTransaction, Inventory, Supplier, Location, SubLocation, \
+                   ReceivingDocument, InventoryDocumentType
 
 
 class LocationForm_view(DetailForm):
@@ -52,3 +53,11 @@ class InventoryTransactionForm(forms.ModelForm):
 class SupplierForm(forms.ModelForm):
     class Meta:
         model = Supplier
+
+class ReceivingDocumentForm(forms.ModelForm):
+    class Meta:
+        model = ReceivingDocument
+
+class InventoryDocumentTypeForm(forms.ModelForm):
+    class Meta:
+        model = InventoryDocumentType

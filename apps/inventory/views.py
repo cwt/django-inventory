@@ -277,4 +277,24 @@ def fetch_resources(uri, rel):
     path = os.path.join(settings.MEDIA_ROOT, uri.replace(settings.MEDIA_URL, ""))
     return path
 '''
-#
+
+def template_list(request):
+    
+  
+    
+#    generic_list, dict({'queryset':ItemTemplate.objects.all()}, extra_context=dict(title=_(u'item template'))), 'template_list'),
+#    photos = GenericPhoto.objects.photos_for_object(model_instance)
+#            {'name':_(u'photo'),'attribute':lambda x: '<div class="gallery"><a href="%s"><img src="%s" /></a></div>' % (x.get_display_url(), x.get_thumbnail_url())},
+    
+
+    return object_list(
+        request,
+        queryset = ItemTemplate.objects.all(),
+        template_name = "generic_list.html", 
+        extra_context={
+            'title':'item templates',
+#            'extra_columns':[
+#                {'name':_(u'photo'),'attribute':lambda x: get_main_photo_html(x)},
+#            ]
+        },
+    )
