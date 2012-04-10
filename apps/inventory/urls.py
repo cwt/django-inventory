@@ -10,12 +10,12 @@ from photos.views import generic_photos
 
 from models import ItemTemplate, InventoryTransaction, \
                    Inventory, Log, Location, SubLocation, Supplier, ReceivingDocument, \
-                   InventoryDocumentType
+                   InventoryDocumentType, ReceivingItem
                    
 from forms import InventoryTransactionForm, InventoryForm, \
                   ItemTemplateForm, ItemTemplateForm_view, LogForm, \
                   SupplierForm, LocationForm_view, SubLocationForm_view, ReceivingDocumentForm, \
-                  InventoryDocumentTypeForm
+                  InventoryDocumentTypeForm, ReceivingItemForm
 
 from conf import settings as inventory_settings
                                 
@@ -71,13 +71,18 @@ urlpatterns = patterns('inventory.views',
     
 #    url(r'^reports/items_per_person/(?P<object_id>\d+)/$', 'report_items_per_person', (), 'report_items_per_person'),
 
-    url(r'^receiving/create/$', create_object, {'form_class':ReceivingDocumentForm, 'template_name':'generic_form.html'}, 'receiving_create' ),
-    url(r'^receiving/list/$', generic_list, dict({'queryset':ReceivingDocument.objects.all()}, extra_context=dict(title=_(u'receiving documents'))), 'receiving_list'),
-    url(r'^receiving/(?P<object_id>\d+)/update/$', update_object, {'model':ReceivingDocument, 'template_name':'generic_form.html'}, 'receiving_update'),
-    url(r'^receiving/(?P<object_id>\d+)/delete/$', generic_delete, dict({'model':ReceivingDocument}, post_delete_redirect="Receiving_list", extra_context=dict(object_name=_(u'receiving documents'))), 'receiving_delete'),
+    url(r'^receiving/document/create/$', create_object, {'form_class':ReceivingDocumentForm, 'template_name':'generic_form.html'}, 'receiving_document_create' ),
+    url(r'^receiving/document/list/$', generic_list, dict({'queryset':ReceivingDocument.objects.all()}, extra_context=dict(title=_(u'receiving documents'))), 'receiving_document_list'),
+    url(r'^receiving/document/(?P<object_id>\d+)/update/$', update_object, {'model':ReceivingDocument, 'template_name':'generic_form.html'}, 'receiving_document_update'),
+    url(r'^receiving/document/(?P<object_id>\d+)/delete/$', generic_delete, dict({'model':ReceivingDocument}, post_delete_redirect="Receiving_document_list", extra_context=dict(object_name=_(u'receiving documents'))), 'receiving_document_delete'),
     
     url(r'^document/type/create/$', create_object, {'form_class':InventoryDocumentTypeForm, 'template_name':'generic_form.html'}, 'document_type_create' ),
     url(r'^document/type/list/$', generic_list, dict({'queryset':InventoryDocumentType.objects.all()}, extra_context=dict(title=_(u'document types'))), 'document_type_list'),
     url(r'^document/type/(?P<object_id>\d+)/update/$', update_object, {'model':InventoryDocumentType, 'template_name':'generic_form.html'}, 'document_type_update'),
     url(r'^document/type/(?P<object_id>\d+)/delete/$', generic_delete, dict({'model':InventoryDocumentType}, post_delete_redirect="DocumentType_list", extra_context=dict(object_name=_(u'document types'))), 'document_type_delete'),
+    
+    url(r'^receiving/item/create/$', create_object, {'form_class':ReceivingItemForm, 'template_name':'generic_form.html'}, 'receiving_item_create' ),
+    url(r'^receiving/item/list/$', generic_list, dict({'queryset':ReceivingItem.objects.all()}, extra_context=dict(title=_(u'document types'))), 'receiving_item_list'),
+    url(r'^receiving/item/(?P<object_id>\d+)/update/$', update_object, {'model':ReceivingItem, 'template_name':'generic_form.html'}, 'receiving_item_update'),
+    url(r'^receiving/item/(?P<object_id>\d+)/delete/$', generic_delete, dict({'model':ReceivingItem}, post_delete_redirect="ReceivingItem_list", extra_context=dict(object_name=_(u'receiving items'))), 'receiving_item_delete'),
 )

@@ -199,7 +199,8 @@ class ReceivingDocument(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        return ('receiving_document_view', [str(self.id)])
+        return ('receiving_document_list', [])
+#        return ('receiving_document_view', [str(self.id)])
 
 class ReceivingItem(models.Model):
     receiving_document = models.ForeignKey(ReceivingDocument, verbose_name=_(u'receiving document'))

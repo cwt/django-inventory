@@ -6,7 +6,7 @@ from generic_views.forms import DetailForm
 
 from models import ItemTemplate, Log, \
                    InventoryTransaction, Inventory, Supplier, Location, SubLocation, \
-                   ReceivingDocument, InventoryDocumentType
+                   ReceivingDocument, InventoryDocumentType, ReceivingItem
 
 
 class LocationForm_view(DetailForm):
@@ -61,3 +61,7 @@ class ReceivingDocumentForm(forms.ModelForm):
 class InventoryDocumentTypeForm(forms.ModelForm):
     class Meta:
         model = InventoryDocumentType
+
+class ReceivingItemForm(forms.ModelForm):
+    class Meta:
+        model = ReceivingItem

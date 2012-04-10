@@ -1,21 +1,32 @@
 from django.utils.translation import ugettext_lazy as _
 
 from models import Location, SubLocation, ItemTemplate, Inventory,\
-                 InventoryTransaction, Supplier, InventoryDocumentType
+                 InventoryTransaction, Supplier, InventoryDocumentType, ReceivingDocument
 
 from common.api import register_links, register_menu
 
 import assets
 
 #Miro extensions
+#document type menus
 document_type_list = {'text':_('document types'), 'view':'document_type_list' , 'famfam':'package_go'}
 document_type_create = {'text':_('create new document type'), 'view':'document_type_create', 'famfam':'error_add'}
 document_type_update = {'text':_(u'edit document type'), 'view':'document_type_update', 'args':'object.id', 'famfam':'error'}
 document_type_delete = {'text':_(u'delete document type'), 'view':'document_type_delete', 'args':'object.id', 'famfam':'error_delete'}
 document_type_view = {'text':_(u'details'), 'view':'document_type_view', 'args':'object.id', 'famfam':'package_go'}
 
-register_links(['document_type_view', 'document_type_list', 'document_type_create', 'document_type_update', 'inventory_delete', 'inventory_transaction_list'], [document_type_create], menu_name='sidebar')
+register_links(['document_type_view', 'document_type_list', 'document_type_create', 'document_type_update', 'document_type_delete'], [document_type_create], menu_name='sidebar')
 register_links(InventoryDocumentType, [document_type_update, document_type_delete])
+
+#receiving document menus
+receiving_document_list = {'text':_('receiving documents'), 'view': 'receiving_document_list', 'famfam':'page'}
+receiving_document_create = {'text':_('create new receiving document'), 'view':'receiving_document_create', 'famfam':'error_add'}
+receiving_document_update = {'text':_(u'edit receiving document'), 'view':'receiving_document_update', 'args':'object.id', 'famfam':'error'}
+receiving_document_delete = {'text':_(u'delete receiving document'), 'view':'receiving_document_delete', 'args':'object.id', 'famfam':'error_delete'}
+receiving_document_view = {'text':_(u'details'), 'view':'receiving_document_view', 'args':'object.id', 'famfam':'package_go'}
+
+register_links(['receiving_document_view', 'receiving_document_list', 'receiving_document_create', 'receiving_document_update', 'receiving_document_delete'], [receiving_document_create], menu_name='sidebar')
+register_links(ReceivingDocument, [receiving_document_update, receiving_document_delete])
 
 #end of miro extensions
 
@@ -66,7 +77,7 @@ jump_to_inventory = {'text':_(u'return to inventory'), 'view':'inventory_view', 
 
 template_menu_links = [template_list, template_orphan_list, supplier_list]
 inventory_menu_links = [
-    inventory_list,#, inventory_transaction_list, inventory_transaction_create
+    inventory_list, receiving_document_list,#, inventory_transaction_list, inventory_transaction_create
 ]
 
 location_filter = {'name':'location', 'title':_(u'location'), 'queryset':Location.objects.all(), 'destination':'location'}
