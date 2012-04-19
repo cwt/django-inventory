@@ -1,0 +1,116 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-20 02:09+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: __init__.py:7
+msgid "delete photo"
+msgstr ""
+
+#: __init__.py:8
+msgid "mark photo as main"
+msgstr ""
+
+#: models.py:27
+msgid "Title"
+msgstr ""
+
+#: models.py:28
+msgid "Main photo?"
+msgstr ""
+
+#: models.py:33 views.py:60
+msgid "photo"
+msgstr ""
+
+#: models.py:34
+msgid "photos"
+msgstr ""
+
+#: views.py:25
+msgid "The photo is too big."
+msgstr ""
+
+#: views.py:45
+msgid "The photo was added successfully."
+msgstr ""
+
+#: views.py:51
+#, python-format
+msgid "photos for%(object_name)s%(max_photos)s: %(object)s"
+msgstr ""
+
+#: views.py:54
+#, python-format
+msgid " (maximum of %s)"
+msgstr ""
+
+#: views.py:61
+msgid "main photo"
+msgstr ""
+
+#: views.py:62
+msgid "title"
+msgstr ""
+
+#: views.py:71
+msgid "Upload new photo"
+msgstr ""
+
+#: views.py:93
+msgid "The main photo has been changed."
+msgstr ""
+
+#: views.py:115
+msgid ""
+"The main photo was deleted successfully.  The another photo has been "
+"selected as the main photo."
+msgstr ""
+
+#: views.py:117
+msgid "The main photo was deleted successfully."
+msgstr ""
+
+#: views.py:119
+msgid "The photo was deleted successfully."
+msgstr ""
+
+#: views.py:126
+msgid "Are you sure you wish to delete this photo?"
+msgstr ""
+
+#: templates/generic_photos_subtemplate.html:15
+msgid "Photos"
+msgstr ""
+
+#: templates/generic_photos_subtemplate.html:48
+#, python-format
+msgid "There are no %(title)s "
+msgstr ""
+
+#: templates/generic_photos_subtemplate.html:50
+msgid "There are no photos"
+msgstr ""
+
+#: templates/photos.html:13
+msgid "Please wait..."
+msgstr ""
+
+#: templates/photos.html:20
+msgid "Add / remove photos"
+msgstr ""

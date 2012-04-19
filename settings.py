@@ -50,6 +50,7 @@ LANGUAGES = (
     ('es', ugettext('Spanish')),
     ('en', ugettext('English')),
     ('ru', ugettext('Russian')),
+    ('th', ugettext('Thai')),
 )
     
 SITE_ID = 1
@@ -130,7 +131,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     'django.core.context_processors.request',
-#    "grappelli.context_processors.admin_template_path",
+    "grappelli.context_processors.admin_template_path",
     'django.contrib.messages.context_processors.messages',
 ]
 
